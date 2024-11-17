@@ -7,15 +7,16 @@
 
 import Foundation
 import CoreLocation     //importing CoreLocation to use Location Services
-import Combine
+import Combine          //used to handle published values and value observation
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate{
     private let locationManager = CLLocationManager()
     
+    //inititalizing Combine publishers
     @Published var latitude: Double?
     @Published var longitude: Double?
     
-    //overrriding initializer to implement all needed functions etc..
+    //overrriding initializer to implement all needed properties and start functions for location etc..
     override init() {
         super.init()
         

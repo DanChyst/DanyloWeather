@@ -7,6 +7,7 @@
 
 import Foundation
 
+//weather responce model to store data received with api responce
 struct WeatherResponce: Codable {
     let location: Location
     let current: CurrentWeather
