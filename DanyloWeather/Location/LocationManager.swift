@@ -16,6 +16,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate{
     //inititalizing Combine publishers
     @Published var latitude: Double?
     @Published var longitude: Double?
+    @Published var locationError: String?
     
     //overrriding initializer to implement all needed properties and start functions for location etc..
     override init() {
@@ -32,10 +33,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate{
         guard let latestLocation = locations.last else {return}
         latitude = latestLocation.coordinate.latitude
         longitude = latestLocation.coordinate.longitude
+        locationError = nil
     }
     
     //handling location error
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationError = "Failed to get location!"
         print("Failed to get location: \(error.localizedDescription)")
     }
     

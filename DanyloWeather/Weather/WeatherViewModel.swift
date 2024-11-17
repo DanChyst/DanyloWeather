@@ -21,7 +21,8 @@ class WeatherViewModel: ObservableObject{
     @Published var feelsLike: String = "--"
     @Published var visibility: String = "--"
     @Published var uvIndex: String = "--"
-    @Published var errorMsg: String = "--"
+    @Published var errorMsg: String?
+    
     
     //inintializing needed managers
     private let locationManager = LocationManager()
@@ -38,6 +39,17 @@ class WeatherViewModel: ObservableObject{
     
     //function to trigger Weather API call on location change
     private func checkLocationUpdate(){
+        
+        locationManager.$locationError
+            .sink{ [weak self] error in
+                if let error = error{
+                    self?.errorMsg = error
+                }
+            }
+            .store(in: &cancellables)
+        
+        
+        
         locationManager.$latitude
             .combineLatest(locationManager.$longitude)   //combining the streams of updates of lat and long into one, emmits tuple on each update of either of these values
             .sink{ [weak self] latitude, longitude in      //subscribing to stream of updates running task on each update of the values in tuple
@@ -73,7 +85,7 @@ class WeatherViewModel: ObservableObject{
         feelsLike = "\(weather.current.feelslike_c)°C"
         visibility = "\(weather.current.vis_km) km"
         uvIndex = "\(weather.current.uv)"
-        errorMsg = ""
+        errorMsg = nil
     }
 
     

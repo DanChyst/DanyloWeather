@@ -34,8 +34,8 @@ struct ContentView: View {
         }
         .padding()
         
-        if viewModel.errorMsg != ""{
-            Text(viewModel.errorMsg)
+        if let errorMessage = viewModel.errorMsg {
+            Text(errorMessage)
                 .foregroundStyle(.red)
                 .padding()
         }
