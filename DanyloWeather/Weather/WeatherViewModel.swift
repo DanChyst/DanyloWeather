@@ -8,6 +8,7 @@
 import Foundation
 import Combine
 
+@MainActor
 class WeatherViewModel: ObservableObject{
     @Published var location: String = "Fetching Weather"
     @Published var temperature: String = "--"
@@ -59,13 +60,13 @@ class WeatherViewModel: ObservableObject{
     
     private func updateValues(with weather: WeatherResponce){
         location = "\(weather.location.name), \(weather.location.region), \(weather.location.country)"
-        temperature = "\(weather.current.temperature)°C"
-        windSpeed = "\(weather.current.windSpeed) km/h"
-        windDirection = weather.current.windDirection
+        temperature = "\(weather.current.temp_c)°C"
+        windSpeed = "\(weather.current.wind_kph) km/h"
+        windDirection = weather.current.wind_dir
         humidity = "\(weather.current.humidity)%"
-        feelsLike = "\(weather.current.feelsLike)°C"
-        visibility = "\(weather.current.visibility) km"
-        uvIndex = "\(weather.current.uvIndex)"
+        feelsLike = "\(weather.current.feelslike_c)°C"
+        visibility = "\(weather.current.vis_km) km"
+        uvIndex = "\(weather.current.uv)"
         errorMsg = ""
     }
 
