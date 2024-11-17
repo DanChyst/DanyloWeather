@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Text")
+            Text("Updated file 2")
         }
         .padding()
     }
