@@ -1,9 +1,9 @@
-//
-//  ContentView.swift
 //  DanyloWeather
 //
 //  Created by Dan on 2024-11-14.
 //
+// Student name: Danylo Chystov
+// Student ID: 991560947
 
 import SwiftUI
 
@@ -11,6 +11,11 @@ struct ContentView: View {
     @StateObject private var viewModel = WeatherViewModel()
    
     var body: some View {
+        Text("Weather App")
+            .font(.title)
+            .bold()
+            .padding(.top, 50)
+        Spacer()
         VStack {
             Text(viewModel.location)
                 .font(.headline)
@@ -34,7 +39,9 @@ struct ContentView: View {
                 .foregroundStyle(.red)
                 .padding()
         }
+        Spacer()
     }
+
 }
 
 #Preview {

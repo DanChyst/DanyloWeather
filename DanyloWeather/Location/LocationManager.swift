@@ -1,9 +1,10 @@
 //
-//  LocationManager.swift
 //  DanyloWeather
 //
 //  Created by Dan on 2024-11-14.
 //
+// Student name: Danylo Chystov
+// Student ID: 991560947
 
 import Foundation
 import CoreLocation     //importing CoreLocation to use Location Services

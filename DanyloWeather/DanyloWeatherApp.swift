@@ -1,5 +1,4 @@
 //
-//  DanyloWeatherApp.swift
 //  DanyloWeather
 //
 //  Created by Dan on 2024-11-14.
